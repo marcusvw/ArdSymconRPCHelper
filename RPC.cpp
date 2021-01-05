@@ -170,7 +170,7 @@ bool JsonRPC::execute(String method, String parameters)
     }
     else
     {
-        Serial.printf("RPC INF failed %d:", retVal);
+        Serial.printf("RPC INF failed %d:\r\n", retVal);
         retVal = false;
     }
 
@@ -209,7 +209,7 @@ String JsonRPC::execute_string(String method, String parameters)
             }
             else
             {
-                Serial.println("SLI INF JSON Interpreted");
+                Serial.print("SLI INF JSON Interpreted Result:");
                 Serial.println(doc["result"].as<String>());
                 retVal = doc["result"].as<String>();
             }
@@ -284,7 +284,7 @@ double JsonRPC::execute_float(String method, String parameters)
             }
             else
             {
-                Serial.println("SLI INF JSON Interpreted");
+                Serial.print("SLI INF JSON Interpreted");
                 Serial.println(doc["result"].as<String>());
                 retVal = doc["result"];
             }
