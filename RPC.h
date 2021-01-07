@@ -19,7 +19,7 @@ class JsonRPC
 {
     public:
     static String execute_string(String method, String parameters);
-    static uint32_t execute_int(String method, String parameters);
+    static int32_t execute_int(String method, String parameters);
     static double execute_float(String method, String parameters);
     static bool execute_boolean(String method, String parameters);
     static bool checkStatus();

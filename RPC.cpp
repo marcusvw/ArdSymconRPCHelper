@@ -226,9 +226,9 @@ String JsonRPC::execute_string(String method, String parameters)
 /**
  * Execute RPC Call with return value int
  **/
-uint32_t JsonRPC::execute_int(String method, String parameters)
+int32_t JsonRPC::execute_int(String method, String parameters)
 {
-     uint32_t retVal = 0;
+     int32_t retVal = 0;
     if (execute(method, parameters))
     {
 
