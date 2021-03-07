@@ -161,12 +161,12 @@ bool JsonRPC::execute(String method, String parameters)
     http.setAuthorization(user, password);
     http.addHeader("Content-Type", "application/json", false, true);
     String req = "{\"jsonrpc\": \"2.0\", \"id\": \"0\", \"method\": \"" + method + "\", \"params\": [" + parameters + "]}";
-    Serial.println("RPC INF Request: " + req);
+    //Serial.println("RPC INF Request: " + req);
     int postRes = http.POST(req);
     if (postRes == HTTP_CODE_OK)
     {
         jsonPayload = http.getString();
-        Serial.println("RPC INF:" + jsonPayload);
+        //Serial.println("RPC INF:" + jsonPayload);
     }
     else
     {
@@ -197,7 +197,7 @@ String JsonRPC::execute_string(String method, String parameters)
 
         if (jsonPayload.length() != 0)
         {
-            Serial.println("RPC INF JSON Interpretation");
+            //Serial.println("RPC INF JSON Interpretation");
              DynamicJsonDocument doc(20000);
             DeserializationError error = deserializeJson(doc, jsonPayload);
 
@@ -209,8 +209,8 @@ String JsonRPC::execute_string(String method, String parameters)
             }
             else
             {
-                Serial.print("SLI INF JSON Interpreted Result:");
-                Serial.println(doc["result"].as<String>());
+                //Serial.print("SLI INF JSON Interpreted Result:");
+                //Serial.println(doc["result"].as<String>());
                 retVal = doc["result"].as<String>();
             }
         }
@@ -234,7 +234,7 @@ int32_t JsonRPC::execute_int(String method, String parameters)
 
         if (jsonPayload.length() != 0)
         {
-            Serial.println("RPC INF JSON Interpretation");
+            //Serial.println("RPC INF JSON Interpretation");
             StaticJsonDocument<1024> doc;
             DeserializationError error = deserializeJson(doc, jsonPayload);
 
@@ -246,8 +246,8 @@ int32_t JsonRPC::execute_int(String method, String parameters)
             }
             else
             {
-                Serial.println("SLI INF JSON Interpreted");
-                Serial.println(doc["result"].as<String>());
+                //Serial.println("SLI INF JSON Interpreted");
+                //Serial.println(doc["result"].as<String>());
                 retVal = doc["result"];
             }
         }
@@ -272,7 +272,7 @@ double JsonRPC::execute_float(String method, String parameters)
 
         if (jsonPayload.length() != 0)
         {
-            Serial.println("RPC INF JSON Interpretation");
+            //Serial.println("RPC INF JSON Interpretation");
             StaticJsonDocument<1024> doc;
             DeserializationError error = deserializeJson(doc, jsonPayload);
 
@@ -284,8 +284,8 @@ double JsonRPC::execute_float(String method, String parameters)
             }
             else
             {
-                Serial.print("SLI INF JSON Interpreted");
-                Serial.println(doc["result"].as<String>());
+                //Serial.print("SLI INF JSON Interpreted");
+                //Serial.println(doc["result"].as<String>());
                 retVal = doc["result"];
             }
         }
@@ -309,7 +309,7 @@ bool JsonRPC::execute_boolean(String method, String parameters)
 
         if (jsonPayload.length() != 0)
         {
-            Serial.println("RPC INF JSON Interpretation");
+            //Serial.println("RPC INF JSON Interpretation");
             StaticJsonDocument<1024> doc;
             DeserializationError error = deserializeJson(doc, jsonPayload);
 
@@ -321,8 +321,8 @@ bool JsonRPC::execute_boolean(String method, String parameters)
             }
             else
             {
-                Serial.println("SLI INF JSON Interpreted");
-                Serial.println(doc["result"].as<String>());
+                //Serial.println("SLI INF JSON Interpreted");
+                //Serial.println(doc["result"].as<String>());
                 retVal = doc["result"];
             }
         }
